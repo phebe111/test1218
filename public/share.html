@@ -92,8 +92,15 @@
         if(isiOS){
             $(".btnDialog").show();
         }else{
-            $(".tobrowser").show();
-            window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+            var is_weixin = (function(){return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1})();
+            var is_qq = (function(){return navigator.userAgent.toLowerCase().indexOf('qq/') > -1})();
+            if(!is_weixin && !is_qq){
+                window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+            }else{
+                $(".tobrowser").show();
+            }
+            
+            
         }
     }
     
