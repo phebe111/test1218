@@ -86,7 +86,12 @@
     var is_weixin = (function(){return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1})();
     var is_qq = (function(){return navigator.userAgent.toLowerCase().indexOf('qq/') > -1})();
     if(!is_weixin && !is_qq){
+        alert(111)
         window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+    }else{
+        alert(222)
+        alert(!is_weixin)
+        alert(!is_qq)
     }
     if(isiOS){
         $(".btnDialog").show();
