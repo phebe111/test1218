@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>风驰加速器</title>
+    <script src="../js/font_size.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/dialog.js"></script> 
+    <style type="text/css" src="../css/dialog.css"></style>
+    <style>
+        html,body{
+            height: 100%;
+            margin: 0;
+        }
+        .share-wrap{
+            background-image: url("../img/share.png");
+            background-size: 100% 100%;
+            height: 100%;
+        }
+        .share-btn{
+            background-color: #fff;
+            color: #05aaff;
+            width: 4.888889rem;
+            height: 1.101852rem;
+            border: none;
+            height: 1rem;
+            border-radius: .277778rem;
+            position: absolute;
+            bottom: 12%;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: .444444rem;
+        }
+        .tobrowser{
+            float: right;
+            width: 4.32037rem;
+            margin-top: 1.72037rem;
+            margin-right: .37037rem;
+            display: none;
+        }
+        .tobrowser img{
+            width: 100%;           
+        }
+    </style>
+</head>
+<body>
+    <div class="share-wrap">
+        <button class="share-btn" onclick="downloadApp">点击下载</button>
+        <div class="tobrowser"><img src="../img/sharetip.png"></div>
+    </div>
+</body>
+<script>
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+    var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if(isiOS){
+		singleBtnDialog('风驰加速器IOS版暂未上线','','我知道了',function(){});
+	}
+
+    function downloadApp(){   
+        $(".share-btn").css("color","#009aea"); 
+        if(isiOS){
+            singleBtnDialog('风驰加速器IOS版暂未上线','','我知道了',function(){});
+        }else{
+            $(".tobrowser").show();
+            window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+        }
+    }
+    
+    function singleBtnDialog(content,title,btnText,func,close){
+        return  $(document).dialog({
+            type : 'confirm',
+            content: content,
+            titleText:title==''?'':title,
+            titleShow:title==''?false:true,
+            autoClose : close==''?'':close,
+            dialogClass: 'confirm-with-title', 
+            buttons: [          
+                {
+                    name: btnText,
+                    class: 'custom-btn',
+                    callback:  func
+                }
+            ]
+        });	
+    }
+
+</script>
+</html>
