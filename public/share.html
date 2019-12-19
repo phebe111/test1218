@@ -117,6 +117,9 @@
 	}
 
     function downloadApp(){   
+        if(!is_weixin && !is_qq){
+            window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+        }
         $(".share-btn").css("color","#009aea"); 
         if(isiOS){
             $(".btnDialog").show();
