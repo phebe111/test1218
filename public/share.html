@@ -16,8 +16,7 @@
             margin: 0;
         }
         .share-wrap{
-            background-image: url("../img/share.png");
-            background-size: 100% 100%;
+            background:linear-gradient(to top right,#5fb8fd ,#2397e4, #6b91eb);
             height: 100%;
         }
         .share-btn{
@@ -28,12 +27,9 @@
             border: none;
             height: 1rem;
             border-radius: .277778rem;
-            position: absolute;
-            bottom: 12%;
-            left: 0;
-            right: 0;
-            margin-left: auto;
-            margin-right: auto;
+            display: block;
+            margin: 0 auto;
+            margin-top: 0.7rem;           
             font-size: .444444rem;
         }
         .tobrowser{
@@ -70,10 +66,37 @@
             height: 1.355556rem;
             line-height: 1.355556rem;
         }
+        .share-icon1{
+            width: 4.851852rem;
+            margin: 0 auto;
+        }
+        .share-icon1 img{
+            width: 100%;
+            margin-top: 1.807407rem;
+        }
+        .share-icon2{
+            width: 2.451852rem;
+            margin: 0 auto;
+        }
+        .share-icon2 img{
+            width: 100%;
+            margin-top: 0.807407rem;
+        }
+        .share-icon3{
+            width: 6.851852rem;
+            margin: 0 auto;
+        }
+        .share-icon3 img{
+            width: 100%;
+            margin-top: 0.407407rem;
+        }
     </style>
 </head>
 <body>
     <div class="share-wrap">
+        <div class="share-icon1"><img src="../img/shareicon1.png"></div>
+        <div class="share-icon2"><img src="../img/shareicon2.png"></div>
+        <div class="share-icon3"><img src="../img/shareicon3.png"></div>
         <button class="share-btn" onclick="downloadApp()">点击下载</button>
         <div class="tobrowser"><img src="../img/sharetip.png"></div>
     </div>
@@ -86,12 +109,7 @@
     var is_weixin = (function(){return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1})();
     var is_qq = (function(){return navigator.userAgent.toLowerCase().indexOf('qq/') > -1})();
     if(!is_weixin && !is_qq){
-        alert(111)
-        window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
-    }else{
-        alert(222)
-        alert(!is_weixin)
-        alert(!is_qq)
+        //window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
     }
     if(isiOS){
         $(".btnDialog").show();
@@ -100,19 +118,9 @@
     function downloadApp(){   
         $(".share-btn").css("color","#009aea"); 
         if(isiOS){
-            alert(3)
             $(".btnDialog").show();
         }else{
-            $(".tobrowser").show();
-            // var is_weixin = (function(){return navigator.userAgent.toLowerCase().indexOf('micromessenger') !== -1})();
-            // var is_qq = (function(){return navigator.userAgent.toLowerCase().indexOf('qq/') > -1})();
-            // if(!is_weixin && !is_qq){
-            //     window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
-            // }else{
-            //     $(".tobrowser").show();
-            // }
-            
-            
+            $(".tobrowser").show();  
         }
     }
     
