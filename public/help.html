@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>帮助中心</title>
+    <script src="../js/font_size.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <style> 
+        body{margin: 0;} 
+        .help{
+            display: flex;
+            flex-direction: row;
+        }  
+        .help-left{
+            border-top: .027778rem solid #eeeeee;
+            width: 1.851852rem;  
+            height: 1.851852rem;   
+            flex: none;   
+        }  
+        .help-icon{
+            width: .833333rem;
+            height: .833333rem;  
+            display: block;
+            margin: auto;
+            padding-top: 6%;
+        } 
+        .help-name{
+            font-size: .351852rem;
+            color: #111111;
+            margin-top: .277778rem;
+            text-align: center;
+        }
+        .help-title{
+            color: #333333;
+            font-size: .388889rem;
+            height: 1.111111rem;
+            border-top: .027778rem solid #eeeeee;
+            line-height: 1.111111rem;
+            padding-left: .277778rem;
+        }
+        .help-left-wrap{
+            border-right: .027778rem solid #eeeeee;
+            margin-top: .185185rem;
+            margin-bottom:.185185rem;
+            height: 1.851852rem;
+        }
+        .help-cover{
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.5);
+
+        }
+        .help-cover{ 
+            position:absolute;
+            left:0px;
+            top:0px;
+            background:rgba(0, 0, 0, 0.4);
+            width:100%;  /*宽度设置为100%，这样才能使隐藏背景层覆盖原页面*/
+            height:100%;
+            filter:alpha(opacity=90);  /*设置透明度为90%*/
+            opacity:0.9;  /*非IE浏览器下设置透明度为90%*/
+            display:none; 
+            z-Index:999;  
+        }
+        .help-model{ 
+            position:absolute;
+            width:100%;
+            height:9.259259rem;
+            bottom: 0;
+            background-color:#fff;
+            display:none;
+            cursor:pointer;
+            z-Index:9999;  
+            animation: toTop 1s;
+            transform: translateY(0px);
+            overflow: scroll;
+        }
+        .help-model::-webkit-scrollbar{
+			display: none;
+        }
+        @keyframes toTop {
+            0% {transform: translateY(9.259259rem);opacity: 1;}
+            100% {transform: translateY(0px);opacity: 1}
+        }
+        @keyframes tobottom {
+            100% {transform: translateY(9.259259rem);opacity: 1;}
+            0% {transform: translateY(0px);opacity: 1}
+        }
+        .help-close-animate{
+            animation: tobottom 1s;
+            transform: translateY(0px);
+            animation-fill-mode:forwards;
+        }
+        .help-close{
+            width: .37037rem;
+            height: .37037rem;
+            background-image: url(../img/close.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-right: .37037rem;
+            margin-top: .37037rem;
+        } 
+        .help-model-title{
+            font-size: .444444rem;
+            padding-left: .37037rem;
+            color: #111111;
+        }
+        .help-model-title-wrap{
+            height: 1.111111rem;
+            border-bottom: 1px solid #000;
+            line-height: 1.111111rem;
+            display: flex;
+            flex-direction: row;
+            font-weight: bold;
+            justify-content: space-between;
+        }
+        .help-detail{
+            font-size: .388889rem;
+            color: #333333;
+            line-height: .666667rem;
+            margin: .185185rem .37037rem;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div class="help">
+        <div class="help-left">
+            <div class="help-left-wrap">
+                <image src="../img/helpdelay.png" class="help-icon"></image>
+                <div class="help-name">延迟问题</div>
+            </div>           
+        </div>
+        <div style="flex: 1;">
+            <div class="help-title" onclick="showDetail(1)">什么是“预期降至”延迟</div>
+            <div class="help-title" onclick="showDetail(2)">为什么显示的延迟和游戏内不一样</div>
+        </div>
+    </div>
+    <div class="help">
+        <div class="help-left">
+            <div class="help-left-wrap">
+                <image src="../img/helpwlan.png" class="help-icon"></image>
+                <div class="help-name">流量问题</div>
+            </div>
+        </div>
+        <div style="flex: 1;">
+            <div class="help-title" onclick="showDetail(3)">赠送的通用流量是什么？</div>
+            <div class="help-title" onclick="showDetail(4)">赠送的流量什么时候生效？</div>
+        </div>
+    </div>
+    <div class="help" style="border-bottom: 1px solid #eee;">
+        <div class="help-left" style="height: 3.333333rem;">
+            <div class="help-left-wrap" style="height: 2.962963rem;">
+                <image src="../img/helpgame.png" class="help-icon" style="padding-top: 39%;"></image>
+                <div class="help-name">游戏问题</div>
+            </div>
+        </div>
+        <div style="flex: 1;">
+            <div class="help-title" onclick="showDetail(5)">找不到需要加速的游戏怎么办？</div>
+            <div class="help-title" onclick="showDetail(6)">为什么会自动断开？</div>
+            <div class="help-title" onclick="showDetail(7)">一直无法加速成功怎么办？</div>
+        </div>
+    </div>   
+    <div class="help-cover"></div>
+    <!-- 以下是弹框内容 -->
+    <div class="help-model">
+        <div class="help-model-title-wrap">
+            <div class="help-model-title"></div>
+            <div class="help-close" onclick="closeModel()"></div>
+        </div>
+        <div class="help-detail"></div>
+    </div>
+</body>
+<script>
+    function showDetail(num){
+        $(".help-model")[0].removeEventListener("webkitAnimationEnd",endFun);
+        $(".help-model").removeClass("help-close-animate");
+        $(".help-cover").css("display","block");
+        $(".help-model").css("display","block");
+        switch(num){
+            case 1:
+               $(".help-model-title").html("什么是“预期降至”延迟");
+               $(".help-detail").html("“预期降至”延迟，指的是风驰加速器根据大量用户加速前后的数据结果及用户当前的网络状态，推算出的预计加速后的延迟。");
+               break;
+            case 2:
+               $(".help-model-title").html("为什么显示的延迟和游戏内不一样");
+               $(".help-detail").html("风驰加速器显示的延迟为您本地网络到加速服务器的延迟，具体延迟请以游戏内延迟数值或自身感受为准。");
+               break;
+            case 3:
+               $(".help-model-title").html("赠送的通用流量是什么？");
+               $(".help-detail").html("赠送的流量是广东省内通用流量，仅限该号码当月使用。");
+               break;
+            case 4:
+               $(".help-model-title").html("赠送的流量什么时候生效？");
+               $(".help-detail").html("订购加速权益后流量生效，请留意短信通知。");
+               break;
+            case 5:
+               $(".help-model-title").html("找不到需要加速的游戏怎么办？");
+               $(".help-detail").html("可在意见反馈中向我们反映，加速器也在努力丰富游戏库~");
+               break;
+            case 6:
+               $(".help-model-title").html("为什么会自动断开？");
+               $(".help-detail").html("1、网络环境的变化或网络波动可能会造成连接中断"+"<br/>"+"2、安卓手机若安装了手机管家类的应用，可能会杀掉风驰加速器的后台进程，请将风驰加速器设置为允许后台运行。");
+               break;
+            case 7:
+               $(".help-model-title").html("一直无法加速成功怎么办？");
+               $(".help-detail").html("1、请检查当前网络是否可用，确认网络正常后重启加速器，尝试重新加速。"+"<br/>"+"2、请检查是否同时开启了其他加速器，请在后台关闭后再进行加速。");
+               break;
+        }
+    }
+    function closeModel(){
+        $(".help-model")[0].addEventListener("webkitAnimationEnd",endFun);
+        $(".help-model").addClass("help-close-animate");
+    }
+    function endFun(){
+        $(".help-cover").css("display","none");
+    }
+</script>
+</html>
