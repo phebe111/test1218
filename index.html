@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>消息公告</title>
+    <script src="/js/font_size.js"></script>
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <style> 
+          
+    </style>
+</head>
+<body>
+    <div class="message">
+        <div class="message-title"></div>
+        <div class="message-content"></div>
+    </div>
+</body>
+<script>
+    $(function(){
+        var id = window.location.search.split("=")[1];
+        getContents(id);
+    })
+    function getContents(id){
+        $.ajax({
+            url:"http://192.168.75.201:9095/mySetting/noticeDetail",
+            type:'get',           
+            data: {
+                "id":2
+            },
+            success:function(data){
+                $(".message-title").html(data.data.title);
+                $(".message-content").html(data.data.content);
+            },
+            error:function(xhr){
+                console.log(xhr)
+            }
+        })
+    }
+</script>
+</html>
