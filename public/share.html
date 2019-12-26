@@ -119,8 +119,21 @@
 
     function downloadApp(){   
         if(!is_weixin && !is_qq){
+            alert(4)
             //判断是否安装app
-            openApp('http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk');
+            var d = new Date();
+    var t0 = d.getTime();
+    var loadDateTime = new Date();
+  window.setTimeout(function() {
+   var timeOutDateTime = new Date();
+   if (timeOutDateTime - loadDateTime < 5000) {
+    window.location = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+   } else {
+    window.close();
+   }
+  },
+  25);
+  window.location = "accelerate://cmic.com";
             //window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
         }else{
             $(".share-btn").css("color","#009aea"); 
