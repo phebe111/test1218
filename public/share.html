@@ -171,6 +171,7 @@
         var ifr = document.createElement('iframe');
         ifr.src = 'accelerate://cmic.com';
         ifr.style.display = 'none';
+        console.log(999)
         if (callback) {
             console.log(callback)
             checkOpen(function (opened) {//checkOpen中的cbk参数 = function (opened)
@@ -181,6 +182,7 @@
                     window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
                 }else if(opened ==1){
                     //用户打开了app  用户有安装app 
+                    console.log("已经安装了啊啊")
                 }
             });
             }
