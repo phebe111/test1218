@@ -7,6 +7,7 @@
     <title>风驰加速器</title>
     <script src="../js/font_size.js"></script>
     <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/vconsole.min.js"></script>
     <style type="text/css" src="../css/index.css"></style> 
     <style>
         html,body{
@@ -101,6 +102,7 @@
     <div class="btnDialog"><div class="dialogTip">风驰加速器IOS版暂未上线</div><div class="dialogClose" onclick="closeTip()">我知道了</div></div>
 </body>
 <script>
+    var vConsole = new VConsole();
     var u = navigator.userAgent;
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
     var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
@@ -108,8 +110,8 @@
     var is_qq = (function(){return navigator.userAgent.toLowerCase().indexOf('qq/') > -1})();
     if(!is_weixin && !is_qq){
         //判断是否安装app
-        isInstallApp('http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk');
-        window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+        openApp('http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk');
+        //window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
     }
     if(isiOS){
         $(".btnDialog").show();
@@ -118,8 +120,8 @@
     function downloadApp(){   
         if(!is_weixin && !is_qq){
             //判断是否安装app
-            isInstallApp();
-            window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
+            openApp();
+            //window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
         }else{
             $(".share-btn").css("color","#009aea"); 
             if(isiOS){
@@ -166,7 +168,7 @@
         }
         //在iframe 中打开APP
         var ifr = document.createElement('iframe');
-        ifr.src = openUrl;
+        ifr.src = 'accelerate://cmic.com';
         ifr.style.display = 'none';
         if (callback) {
             checkOpen(function (opened) {//checkOpen中的cbk参数 = function (opened)
