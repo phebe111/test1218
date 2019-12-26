@@ -138,6 +138,7 @@
 
 //https://yq.aliyun.com/articles/712980# websocket方法来判断
     function openApp(callback) {
+        console.log(111)
         //区分是否android和ios方法
         var u = navigator.userAgent, app = navigator.appVersion;
         var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
@@ -171,7 +172,10 @@
         ifr.src = 'accelerate://cmic.com';
         ifr.style.display = 'none';
         if (callback) {
+            console.log(callback)
             checkOpen(function (opened) {//checkOpen中的cbk参数 = function (opened)
+            console.log(222)
+            console.log(opened)
                 if(opened == 0){
                     //用户没有安装app 可以请求下载地址并跳转 跳转方法：window.location.href 即可
                     window.location.href = "http://129.204.142.93:8788/apk/accelerate1.1.0_debug_20191106142139.apk";
