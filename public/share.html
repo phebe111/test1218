@@ -96,7 +96,7 @@
         <div class="share-icon1"><img src="../img/shareicon1.png"></div>
         <div class="share-icon2"><img src="../img/shareicon2.png"></div>
         <div class="share-icon3"><img src="../img/shareicon3.png"></div>
-        <button class="share-btn" onclick="downloadApp()">1点击下载</button>
+        <button class="share-btn" onclick="downloadApp()">2点击下载</button>
         <div class="tobrowser"><img src="../img/sharetip.png"></div>
     </div>
     <div class="btnDialog"><div class="dialogTip">风驰加速器IOS版暂未上线</div><div class="dialogClose" onclick="closeTip()">我知道了</div></div>
@@ -140,12 +140,12 @@
     function openApp(callback) {
         console.log(111)
         //区分是否android和ios方法
-        var u = navigator.userAgent, app = navigator.appVersion;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
-        if(isAndroid){
-            //openUrl = '调起android的链接?拼接参数（scheme链接找android端的同事要）'
-            openUrl = 'accelerate://cmic.com'
-        }
+        // var u = navigator.userAgent, app = navigator.appVersion;
+        // var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端或者uc浏览器
+        // if(isAndroid){
+        //     //openUrl = '调起android的链接?拼接参数（scheme链接找android端的同事要）'
+        //     openUrl = 'accelerate://cmic.com'
+        // }
         //检查app是否打开
         function checkOpen(cb){
             console.log("cb"+cb)
